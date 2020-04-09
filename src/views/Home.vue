@@ -1,18 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>Type in a task below. Hit enter to save.</p>
+    <AddTodo />
+    <TodoItems />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import AddTodo from '@/components/AddTodo.vue'
+import TodoItems from '@/components/TodoItems.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    AddTodo,
+    TodoItems
+  },
+  mounted () {
+    this.$store.dispatch('initItems');
   }
 }
 </script>
