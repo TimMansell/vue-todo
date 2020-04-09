@@ -2,7 +2,7 @@
   <div class="home">
     <p>Type in a task below. Hit enter to save.</p>
     <AddTodo />
-    <ClearTodos />
+    <ClearTodos v-if="hasTodos" />
     <RemoveDoneTodos v-if="hasDoneTodos" />
     <TodoItems />
   </div>
@@ -25,6 +25,9 @@ export default {
   computed: {
     hasDoneTodos () {
       return this.$store.getters.doneTodos.length
+    },
+    hasTodos () {
+      return this.$store.getters.todos.length
     }
   },
   mounted () {

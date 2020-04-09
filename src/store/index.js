@@ -81,6 +81,9 @@ export default new Vuex.Store({
   getters: {
     doneTodos: (state) => {
       return state.items.filter(todo => todo.done)
+    },
+    todos: (state) => {
+      return state.items;
     }
   },
   modules: {
