@@ -3,14 +3,19 @@
     <li
       v-for="(item, index) in items"
       :key="index">
-      {{ item }}
+      <Todo :item="item" />
     </li>
   </ul>
 </template>
 
 <script>
+import Todo from '@/components/Todo.vue'
+
 export default {
   name: 'TodoItems',
+  components: {
+    Todo
+  },
   computed: {
     items () {
       return this.$store.state.items

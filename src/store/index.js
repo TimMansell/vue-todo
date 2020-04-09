@@ -27,9 +27,15 @@ export default new Vuex.Store({
     addItem ({ commit }, todo) {
       const todos = JSON.parse(localStorage.getItem('todos'));
 
+      const newTodo = {
+        id: todos.length + 1,
+        value: todo,
+        done: false
+      };
+
       const allTodos = [
         ...todos,
-        todo
+        newTodo
       ];
 
       localStorage.setItem('todos', JSON.stringify(allTodos));
@@ -42,6 +48,25 @@ export default new Vuex.Store({
       localStorage.setItem('todos', JSON.stringify(todos));
 
       commit('addItem', todos);
+    },
+    toggleDone ({ commit }, todo) {
+      const { id, done } = todo;
+      const todos = JSON.parse(localStorage.getItem('todos'));
+
+      const updatedTodos = todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            done
+          };
+        }
+
+        return todo;
+      });
+
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+
+      commit('addItem', updatedTodos);
     }
   },
   modules: {
