@@ -35,6 +35,13 @@ export default new Vuex.Store({
       localStorage.setItem('todos', JSON.stringify(allTodos));
 
       commit('addItem', allTodos);
+    },
+    clearTodos ({ commit }) {
+      const todos = [];
+
+      localStorage.setItem('todos', JSON.stringify(todos));
+
+      commit('addItem', todos);
     }
   },
   modules: {
