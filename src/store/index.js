@@ -93,6 +93,15 @@ export default new Vuex.Store({
     },
     todos: (state) => {
       return state.items;
+    },
+    todo: (state) => (id) => {
+      if (!state.items.length) {
+        const todos = JSON.parse(localStorage.getItem('todos'));
+
+        return todos.find(todo => todo.id === id);
+      }
+
+      return state.items.find(todo => todo.id === id);
     }
   },
   modules: {
