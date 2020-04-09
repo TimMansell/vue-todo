@@ -76,6 +76,15 @@ export default new Vuex.Store({
       localStorage.setItem('todos', JSON.stringify(remainingTodos));
 
       commit('addItem', remainingTodos);
+    },
+    removeTodo ({ commit, state }, id) {
+      const { items } = state;
+
+      const remainingTodos = items.filter((todo) => todo.id !== id);
+
+      localStorage.setItem('todos', JSON.stringify(remainingTodos));
+
+      commit('addItem', remainingTodos);
     }
   },
   getters: {
