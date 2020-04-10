@@ -71,6 +71,12 @@ const actions = {
     localStorage.setItem('todos', JSON.stringify(remainingTodos));
 
     commit('addTodo', remainingTodos);
+  },
+  clearFilters ({ commit }) {
+    commit('setFilter', {});
+  },
+  setFilter ({ commit }, filterBy) {
+    commit('setFilter', filterBy);
   }
 };
 

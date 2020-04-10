@@ -18,6 +18,11 @@ const getters = {
     }
 
     return todos.find(todo => todo.id === id);
+  },
+  filterBy: (state) => {
+    const { filterBy } = state;
+
+    return filterBy;
   }
 };
 

@@ -2,8 +2,12 @@
   <div class="home">
     <p>Type in a task below. Hit enter to save.</p>
     <AddTodo />
+    <hr>
     <ClearTodos v-if="hasTodos" />
     <ClearCompletedTodos v-if="hasDoneTodos" />
+    <hr>
+    <TodoFilters />
+    <hr>
     <TodoItems />
   </div>
 </template>
@@ -12,6 +16,7 @@
 import AddTodo from '@/components/AddTodo.vue';
 import ClearTodos from '@/components/ClearTodos.vue';
 import ClearCompletedTodos from '@/components/ClearCompletedTodos.vue';
+import TodoFilters from '@/components/TodoFilters.vue';
 import TodoItems from '@/components/TodoItems.vue';
 
 export default {
@@ -20,6 +25,7 @@ export default {
     AddTodo,
     ClearTodos,
     ClearCompletedTodos,
+    TodoFilters,
     TodoItems
   },
   computed: {
