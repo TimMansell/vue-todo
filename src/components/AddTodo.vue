@@ -12,7 +12,7 @@ export default {
   data () {
     return {
       todoItem: ''
-    }
+    };
   },
   methods: {
     submit (event) {
@@ -25,5 +25,5 @@ export default {
       }
     }
   }
-}
+};
 </script>

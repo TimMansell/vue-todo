@@ -12,5 +12,5 @@ export default {
       this.$store.dispatch('clearTodos');
     }
   }
-}
+};
 </script>

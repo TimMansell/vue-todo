@@ -15,5 +15,5 @@ export default {
       return this.$store.getters.todo(parseInt(id, 10));
     }
   }
-}
+};
 </script>

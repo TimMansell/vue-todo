@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -9,7 +9,7 @@ export default new Vuex.Store({
   },
   mutations: {
     addItem (state, items) {
-      state.items = items
+      state.items = items;
     }
   },
   actions: {
@@ -89,7 +89,7 @@ export default new Vuex.Store({
   },
   getters: {
     doneTodos: (state) => {
-      return state.items.filter(todo => todo.done)
+      return state.items.filter(todo => todo.done);
     },
     todos: (state) => {
       return state.items;
@@ -106,4 +106,4 @@ export default new Vuex.Store({
   },
   modules: {
   }
-})
+});

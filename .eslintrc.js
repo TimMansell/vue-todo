@@ -13,7 +13,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    semi: 'off',
+    semi: ['error', 'always'],
     'vue/html-closing-bracket-newline': 'off'
   },
   overrides: [
@@ -27,4 +27,4 @@ module.exports = {
       }
     }
   ]
-}
+};

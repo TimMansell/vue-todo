@@ -24,14 +24,14 @@ export default {
   },
   computed: {
     hasDoneTodos () {
-      return this.$store.getters.doneTodos.length
+      return this.$store.getters.doneTodos.length;
     },
     hasTodos () {
-      return this.$store.getters.todos.length
+      return this.$store.getters.todos.length;
     }
   },
   mounted () {
     this.$store.dispatch('initItems');
   }
-}
+};
 </script>

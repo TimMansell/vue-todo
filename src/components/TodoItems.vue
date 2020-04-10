@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Todo from '@/components/Todo.vue'
-import RemoveTodo from '@/components/RemoveTodo.vue'
-import EditTodo from '@/components/EditTodo.vue'
+import Todo from '@/components/Todo.vue';
+import RemoveTodo from '@/components/RemoveTodo.vue';
+import EditTodo from '@/components/EditTodo.vue';
 
 export default {
   name: 'TodoItems',
@@ -24,8 +24,8 @@ export default {
   },
   computed: {
     items () {
-      return this.$store.state.items
+      return this.$store.state.items;
     }
   }
-}
+};
 </script>

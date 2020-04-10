@@ -20,5 +20,5 @@ export default {
       this.$store.dispatch('removeTodo', id);
     }
   }
-}
+};
 </script>
