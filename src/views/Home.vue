@@ -3,7 +3,7 @@
     <p>Type in a task below. Hit enter to save.</p>
     <AddTodo />
     <ClearTodos v-if="hasTodos" />
-    <RemoveDoneTodos v-if="hasDoneTodos" />
+    <ClearCompletedTodos v-if="hasDoneTodos" />
     <TodoItems />
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 import AddTodo from '@/components/AddTodo.vue';
 import ClearTodos from '@/components/ClearTodos.vue';
-import RemoveDoneTodos from '@/components/RemoveDoneTodos.vue';
+import ClearCompletedTodos from '@/components/ClearCompletedTodos.vue';
 import TodoItems from '@/components/TodoItems.vue';
 
 export default {
@@ -19,7 +19,7 @@ export default {
   components: {
     AddTodo,
     ClearTodos,
-    RemoveDoneTodos,
+    ClearCompletedTodos,
     TodoItems
   },
   computed: {
@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('initItems');
+    this.$store.dispatch('getTodos');
   }
 };
 </script>

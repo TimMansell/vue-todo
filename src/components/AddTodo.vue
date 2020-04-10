@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submit">
+  <form @submit.prevent="submitTodo">
     <input
       type="text"
       v-model="todoItem">
@@ -15,11 +15,11 @@ export default {
     };
   },
   methods: {
-    submit (event) {
+    submitTodo (event) {
       const { todoItem } = this;
 
       if (todoItem) {
-        this.$store.dispatch('addItem', todoItem);
+        this.$store.dispatch('addTodo', todoItem);
 
         this.todoItem = '';
       }

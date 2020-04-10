@@ -2,13 +2,13 @@
   <label>
     <input
       type="checkbox"
-      v-model="todoIsDone">{{ item.value }}
+      v-model="isTodoDone">{{ item.value }}
   </label>
 </template>
 
 <script>
 export default {
-  name: 'Todo',
+  name: 'TodoItem',
   props: {
     item: {
       type: Object,
@@ -16,7 +16,7 @@ export default {
     }
   },
   computed: {
-    todoIsDone: {
+    isTodoDone: {
       set (done) {
         const { id } = this.item;
 

@@ -3,7 +3,7 @@
     <li
       v-for="(item, index) in items"
       :key="index">
-      <Todo :item="item" />
+      <TodoItem :item="item" />
       <RemoveTodo :id="item.id" />
       <EditTodo :id="item.id" />
     </li>
@@ -11,20 +11,20 @@
 </template>
 
 <script>
-import Todo from '@/components/Todo.vue';
+import TodoItem from '@/components/TodoItem.vue';
 import RemoveTodo from '@/components/RemoveTodo.vue';
 import EditTodo from '@/components/EditTodo.vue';
 
 export default {
   name: 'TodoItems',
   components: {
-    Todo,
+    TodoItem,
     RemoveTodo,
     EditTodo
   },
   computed: {
     items () {
-      return this.$store.state.items;
+      return this.$store.getters.todos;
     }
   }
 };

@@ -5,15 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    items: []
+    todos: []
   },
   mutations: {
-    addItem (state, items) {
-      state.items = items;
+    addTodo (state, todos) {
+      state.todos = todos;
     }
   },
   actions: {
-    initItems ({ commit }) {
+    getTodos ({ commit }) {
       const todos = JSON.parse(localStorage.getItem('todos'));
       const hasItems = todos !== null;
 
@@ -22,9 +22,9 @@ export default new Vuex.Store({
         localStorage.setItem('todos', JSON.stringify([]));
       }
 
-      commit('addItem', todos);
+      commit('addTodo', todos);
     },
-    addItem ({ commit }, todo) {
+    addTodo ({ commit }, todo) {
       const todos = JSON.parse(localStorage.getItem('todos'));
 
       const newTodo = {
@@ -40,14 +40,14 @@ export default new Vuex.Store({
 
       localStorage.setItem('todos', JSON.stringify(allTodos));
 
-      commit('addItem', allTodos);
+      commit('addTodo', allTodos);
     },
     clearTodos ({ commit }) {
       const todos = [];
 
       localStorage.setItem('todos', JSON.stringify(todos));
 
-      commit('addItem', todos);
+      commit('addTodo', todos);
     },
     toggleDone ({ commit }, todo) {
       const { id, done } = todo;
@@ -66,42 +66,47 @@ export default new Vuex.Store({
 
       localStorage.setItem('todos', JSON.stringify(updatedTodos));
 
-      commit('addItem', updatedTodos);
+      commit('addTodo', updatedTodos);
     },
-    removeDoneTodos ({ commit, state }) {
-      const { items } = state;
+    clearCompletedTodos ({ commit, state }) {
+      const { todos } = state;
 
-      const remainingTodos = items.filter((todo) => !todo.done);
+      const remainingTodos = todos.filter((todo) => !todo.done);
 
       localStorage.setItem('todos', JSON.stringify(remainingTodos));
 
-      commit('addItem', remainingTodos);
+      commit('addTodo', remainingTodos);
     },
     removeTodo ({ commit, state }, id) {
-      const { items } = state;
+      const { todos } = state;
 
-      const remainingTodos = items.filter((todo) => todo.id !== id);
+      const remainingTodos = todos.filter((todo) => todo.id !== id);
 
       localStorage.setItem('todos', JSON.stringify(remainingTodos));
 
-      commit('addItem', remainingTodos);
+      commit('addTodo', remainingTodos);
     }
   },
   getters: {
     doneTodos: (state) => {
-      return state.items.filter(todo => todo.done);
+      const { todos } = state;
+
+      return todos.filter(todo => todo.done);
     },
     todos: (state) => {
-      return state.items;
+      return state.todos;
     },
     todo: (state) => (id) => {
-      if (!state.items.length) {
-        const todos = JSON.parse(localStorage.getItem('todos'));
+      const { todos } = state;
 
-        return todos.find(todo => todo.id === id);
+      // If state hasn't been set then use local storage.
+      if (!todos.length) {
+        const todosLocal = JSON.parse(localStorage.getItem('todos'));
+
+        return todosLocal.find(todo => todo.id === id);
       }
 
-      return state.items.find(todo => todo.id === id);
+      return todos.find(todo => todo.id === id);
     }
   },
   modules: {
